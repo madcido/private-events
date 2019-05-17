@@ -18,9 +18,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     User.create(name: "TEST")
     post login_path, params: { user: { name: "TEST" } }
     user = User.find_by(name: "TEST")
-    assert_equal "Welcome back, TEST.", flash[:success]
+    assert_equal "User logged in. Welcome back, TEST.", flash[:success]
     assert_equal user, current_user
     assert_redirected_to user_path(user.id)
+    get root_path
+    assert_template "events/index"
+    assert_select "a", "Log Out"
     delete logout_path
     assert_nil session[:id]
     assert_nil current_user

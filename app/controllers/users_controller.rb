@@ -12,14 +12,14 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       @user = User.find_by(user_params)
-      flash[:success] = "Welcome back, #{@user.name}."
+      flash[:success] = "User logged in. Welcome back, #{@user.name}."
       session[:id] = @user.id
       redirect_to @user
     end
   end
   
   def show
-    @user = User.find_by(params[:id])
+    @user = User.find_by(id: params[:id])
   end
 
   def destroy
