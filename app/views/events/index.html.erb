@@ -1,2 +1,31 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<div class="event-form">
+    <%= form_for @event do |f| %>
+    
+        <div class="input">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+        </div>
+            
+        <div class="input">
+            <%= f.label :description %>
+            <%= f.text_area :description %>
+        </div>
+    
+        <div class="input">
+            <%= f.label :date %>
+            <%= f.date_select :date %>
+        </div>
+    
+        <%= f.submit "Create Event", class: "submit-btn"%>
+    
+    <% end  %>
+</div>
+
+
+<div class="event-list">
+    <% @events.each do |event| %>
+        <h1><%= link_to event.name, event_path(event.id) %></h1>
+        <p><%= event.description %></p>
+        <p>Created by: <%= link_to event.creator.name, user_path(event.creator_id) %></p>
+    <% end %>
+</div>

@@ -1,1 +1,7 @@
-<p>This is <%= @user.name %>'s page and something will be here soon.</p>
+<p>This is <%= @user.name %>'s page.</p>
+
+<ul>Created events list:
+    <% @user.events.each do |event| %>
+        <li><%= link_to event.name, event_path(event.id) %></li>
+    <% end %>
+</ul>

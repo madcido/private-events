@@ -48,7 +48,7 @@ body {
     background-color: purple;
 }
 
-.navbar p{
+.navbar p {
     color: white;
     font-size: 20px;
     margin: 10px;
@@ -67,6 +67,18 @@ body {
 
 .navbar a:hover {
     border-color: white;
+}
+
+.event-form {
+    float: left;
+    position: fixed;
+    top: 100px;
+    left: 50px;
+}
+
+.event-list {
+    float: right;
+    width: 60%;
 }
 
 form {
