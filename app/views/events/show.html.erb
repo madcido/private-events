@@ -7,8 +7,8 @@
 <% if logged_in? %>
     <%= form_for @attendance do |f| %>
         <%= f.submit "Attend to this Event" %> 
-        <%= f.hidden_field :attendee_id, value: session[:id] %>
-        <%= f.hidden_field :attended_event_id, value: params[:id] %>
+        <%= f.hidden_field :user_id, value: session[:id] %>
+        <%= f.hidden_field :event_id, value: params[:id] %>
     <% end %>
 <% end %>
 
