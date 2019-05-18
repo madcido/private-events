@@ -76,9 +76,9 @@ body {
     left: 50px;
 }
 
-.event-list {
-    float: right;
-    width: 60%;
+.centered {
+    width: 400px;
+    margin: 0 auto;
 }
 
 form {

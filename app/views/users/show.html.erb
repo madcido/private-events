@@ -1,7 +1,13 @@
 <p>This is <%= @user.name %>'s page.</p>
 
-<ul>Created events list:
+<ul>Hosting events:
     <% @user.events.each do |event| %>
+        <li><%= link_to event.name, event_path(event.id) %></li>
+    <% end %>
+</ul>
+
+<ul>Attending events:
+    <% @user.attended_events.each do |event| %>
         <li><%= link_to event.name, event_path(event.id) %></li>
     <% end %>
 </ul>

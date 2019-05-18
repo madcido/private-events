@@ -1,1 +1,17 @@
-<h1>Creator:  <%= link_to @event.creator.name, user_path(@event.creator_id) %> </h1>
+<div class="centered">
+    <h1><%= @event.name %></h1>
+    <p>Description: <%= @event.description %></p>
+    <p>Creator:  <%= link_to @event.creator.name, user_path(@event.creator_id) %> </p>
+</div>
+
+<%= form_for @attendance do |f| %>
+    <%= f.submit "Attend to this Event" %> 
+    <%= f.hidden_field :attendee_id, value: session[:id] %>
+    <%= f.hidden_field :attended_event_id, value: params[:id] %>
+<% end %>
+
+<ul>Attendees:
+    <% @event.attendees.each do |attendee| %>
+        <li> <%= link_to attendee.name, user_path(attendee.id) %> </li>
+    <% end %>
+</ul>

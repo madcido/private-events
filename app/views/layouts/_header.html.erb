@@ -1,7 +1,7 @@
 <nav class="navbar row space-around">
     <%= link_to "All Events", root_path %>
     <% if logged_in? %>
-        <p>Welcome, <%= link_to current_user.name, user_path(current_user.id) %></p>
+        <%= link_to current_user.name + "'s Events", user_path(current_user.id) %>
     <% end %>
     <div class="row">
         <% if logged_in? %>

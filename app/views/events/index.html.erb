@@ -22,7 +22,7 @@
 </div>
 
 
-<div class="event-list">
+<div class="centered">
     <% @events.each do |event| %>
         <h1><%= link_to event.name, event_path(event.id) %></h1>
         <p><%= event.description %></p>
