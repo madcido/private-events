@@ -1,25 +1,27 @@
-<div class="event-form">
-    <%= form_for @event do |f| %>
-    
-        <div class="input">
-            <%= f.label :name %>
-            <%= f.text_field :name %>
-        </div>
-            
-        <div class="input">
-            <%= f.label :description %>
-            <%= f.text_area :description %>
-        </div>
-    
-        <div class="input">
-            <%= f.label :date %>
-            <%= f.date_select :date %>
-        </div>
-    
-        <%= f.submit "Create Event", class: "submit-btn"%>
-    
-    <% end  %>
-</div>
+<% if logged_in? %>
+    <div class="event-form">
+        <%= form_for @event do |f| %>
+        
+            <div class="input">
+                <%= f.label :name %>
+                <%= f.text_field :name %>
+            </div>
+                
+            <div class="input">
+                <%= f.label :description %>
+                <%= f.text_area :description %>
+            </div>
+        
+            <div class="input">
+                <%= f.label :date %>
+                <%= f.date_select :date %>
+            </div>
+        
+            <%= f.submit "Create Event", class: "submit-btn"%>
+        
+        <% end  %>
+    </div>
+<% end %>
 
 
 <div class="centered">

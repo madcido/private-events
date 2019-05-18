@@ -4,10 +4,12 @@
     <p>Creator:  <%= link_to @event.creator.name, user_path(@event.creator_id) %> </p>
 </div>
 
-<%= form_for @attendance do |f| %>
-    <%= f.submit "Attend to this Event" %> 
-    <%= f.hidden_field :attendee_id, value: session[:id] %>
-    <%= f.hidden_field :attended_event_id, value: params[:id] %>
+<% if logged_in? %>
+    <%= form_for @attendance do |f| %>
+        <%= f.submit "Attend to this Event" %> 
+        <%= f.hidden_field :attendee_id, value: session[:id] %>
+        <%= f.hidden_field :attended_event_id, value: params[:id] %>
+    <% end %>
 <% end %>
 
 <ul>Attendees:
