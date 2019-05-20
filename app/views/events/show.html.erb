@@ -2,17 +2,23 @@
     <h1><%= @event.name %></h1>
     <p>Description: <%= @event.description %></p>
     <p>Creator:  <%= link_to @event.creator.name, user_path(@event.creator_id) %> </p>
+
+    <% if logged_in? %>
+        <% if @event.attendees.include?(current_user) %>
+            <%= form_for @attendance, method: :delete, url: attendance_path(@event.attendances.find_by(user_id: current_user.id)) do |f| %>
+                <%= f.submit "Leave Attendance" %> 
+            <% end %>
+        <% else %>
+            <%= form_for @attendance do |f| %>
+                <%= f.submit "Attend this Event" %> 
+                <%= f.hidden_field :user_id, value: session[:id] %>
+                <%= f.hidden_field :event_id, value: params[:id] %>
+            <% end %>
+        <% end %>
+    <% end %>
 </div>
 
-<% if logged_in? %>
-    <%= form_for @attendance do |f| %>
-        <%= f.submit "Attend to this Event" %> 
-        <%= f.hidden_field :user_id, value: session[:id] %>
-        <%= f.hidden_field :event_id, value: params[:id] %>
-    <% end %>
-<% end %>
-
-<ul>Attendees:
+<ul>People attending this event:
     <% @event.attendees.each do |attendee| %>
         <li> <%= link_to attendee.name, user_path(attendee.id) %> </li>
     <% end %>
