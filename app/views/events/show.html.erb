@@ -1,7 +1,7 @@
 <div class="centered">
-    <h1><%= @event.name %></h1>
+    <h1><%= link_to @event.name, @event %></h1>
     <p>Description: <%= @event.description %></p>
-    <p>Creator:  <%= link_to @event.creator.name, user_path(@event.creator_id) %> </p>
+    <p>Creator:  <%= link_to @event.creator.name, @event.creator %> </p>
 
     <% if logged_in? %>
         <% if @event.attendees.include?(current_user) %>

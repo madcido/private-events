@@ -1,5 +1,6 @@
 <% if logged_in? %>
     <div class="event-form">
+        <p class="new-event">New Event</p>
         <%= form_for @event do |f| %>
         
             <div class="input">
@@ -26,8 +27,10 @@
 
 <div class="centered">
     <% @events.each do |event| %>
-        <h1><%= link_to event.name, event_path(event.id) %></h1>
-        <p><%= event.description %></p>
-        <p>Created by: <%= link_to event.creator.name, user_path(event.creator_id) %></p>
+        <div class="event-tile">
+            <h1><%= link_to event.name, event %></h1>
+            <p><%= event.description %></p>
+            <p>Created by: <%= link_to event.creator.name, event.creator %></p>
+        </div>
     <% end %>
 </div>

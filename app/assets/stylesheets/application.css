@@ -22,6 +22,19 @@ body {
     margin-top: 80px;
 }
 
+h1 {
+    color: purple;
+}
+
+a {
+    color: purple;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .row {
     display: flex;
     flex-direction: row;
@@ -67,13 +80,6 @@ body {
 
 .navbar a:hover {
     border-color: white;
-}
-
-.event-form {
-    float: left;
-    position: fixed;
-    top: 100px;
-    left: 50px;
 }
 
 .centered {
@@ -122,4 +128,61 @@ li {
 .success {
     border: 1px solid green;
     color: green;
+}
+
+.event-form {
+    float: left;
+    position: fixed;
+    top: 100px;
+    left: -300px;
+    background-color: purple;
+    color: white;
+    padding: 30px;
+    padding-right: 40px;
+    border-radius: 0 20px 20px 0;
+    transition: left 0.7s;
+}
+
+.event-form:hover {
+    left: 0;
+}
+
+.event-form .input {
+    margin-top: 15px;
+}
+
+.event-form label {
+    display: block;
+    margin: 5px 0;
+}
+
+.event-form input {
+    width: 218px;
+}
+
+.event-form textarea {
+    border-radius: 5px;
+    width: 225px;
+    height: 100px;
+    resize: vertical;
+}
+
+.event-form .submit-btn {
+    width: 232px;
+    margin-top: 30px;
+}
+
+.new-event {
+    display: inline-block;
+    transform: rotate(-90deg);
+    position: absolute;
+    right: -10px;
+    top: 150px;
+    font-size: 20px;
+}
+
+.event-tile {
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+    border-bottom: 2px solid black;
 }
