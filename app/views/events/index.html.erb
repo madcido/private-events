@@ -3,7 +3,7 @@
         <p class="new-event">New Event</p>
         <%= form_for @event do |f| %>
         
-            <div class="input">
+            <div class="input name">
                 <%= f.label :name %>
                 <%= f.text_field :name %>
             </div>
@@ -17,6 +17,13 @@
                 <%= f.label :date %>
                 <%= f.date_select :date %>
             </div>
+            
+            <div class="input">
+                <div class="check">
+                    <%= f.check_box :private %>
+                </div>
+                <%= f.label :private, "Make this event private?" %>
+            </div>
         
             <%= f.submit "Create Event", class: "submit-btn"%>
         
@@ -24,10 +31,9 @@
     </div>
 <% end %>
 
-
 <div class="centered">
     <h1>Upcoming Events</h1>
-    <% @events.upcoming.each do |event| %>
+    <% @upcoming_events.each do |event| %>
         <div class="event-tile">
             <h2><%= link_to event.name, event %></h2>
             <p><%= event.date %></p>
@@ -39,7 +45,7 @@
 
 <div class="centered">
     <h1>Past Events</h1>
-    <% @events.past.each do |event| %>
+    <% @past_events.each do |event| %>
         <div class="event-tile">
             <h2><%= link_to event.name, event %></h2>
             <p><%= event.date %></p>

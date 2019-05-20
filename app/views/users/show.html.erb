@@ -11,3 +11,16 @@
         <li><%= link_to event.name, event %></li>
     <% end %>
 </ul>
+
+<ul> Invitations not accepted
+<% @new_invitations.each do |invitation| %>
+    <% if @user. attendig.this event %>
+    <li><%= Event.find_by(id: invitation.event_id).name %></li>
+<% end %>
+</ul>
+
+<ul> Invitations accepted
+<% @accepted_invitations.each do |accepted| %>
+    <li><%= Event.find_by(id: accepted.event_id).name %></li>
+<% end %>
+</ul>

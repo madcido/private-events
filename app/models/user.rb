@@ -18,5 +18,13 @@ class User < ApplicationRecord
     def past_events
         self.attended_events.past
     end
+
+    def new_invitations
+        self.invitations.where(accepted: false)
+    end
+
+    def accepted_invitations
+        self.invitations.where(accepted: true)
+    end
 end
  

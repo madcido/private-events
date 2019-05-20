@@ -5,6 +5,7 @@ class AttendancesController < ApplicationController
         if @attendance.save
             flash["success"] = "You are attending this event now"
             redirect_to event_path(@attendance.event_id)
+
         else
             flash["error"] = "You are already attending this event"
             redirect_to event_path(@attendance.event_id)

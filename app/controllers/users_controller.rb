@@ -9,12 +9,12 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "User created. Welcome, #{@user.name}."
       session[:id] = @user.id
-      redirect_to @user
+      redirect_to root_path
     else
       @user = User.find_by(user_params)
       flash[:success] = "User logged in. Welcome back, #{@user.name}."
       session[:id] = @user.id
-      redirect_to @user
+      redirect_to root_path
     end
   end
   
@@ -22,6 +22,8 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @upcoming_events = @user.upcoming_events
     @past_events = @user.past_events
+    @new_invitations = @user.new_invitations
+    @accepted_invitations = @user.accepted_invitations
   end
 
   def destroy
