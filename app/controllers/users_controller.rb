@@ -20,6 +20,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by(id: params[:id])
+    @upcoming_events = @user.upcoming_events
+    @past_events = @user.past_events
   end
 
   def destroy

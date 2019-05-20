@@ -1,13 +1,13 @@
 <p>This is <%= @user.name %>'s page.</p>
 
-<ul>Hosting events:
-    <% @user.events.each do |event| %>
+<ul>Upcoming events:
+    <% @upcoming_events.each do |event| %>
         <li><%= link_to event.name, event %></li>
     <% end %>
 </ul>
 
-<ul>Attending events:
-    <% @user.attended_events.each do |event| %>
+<ul>Past events:
+    <% @past_events.each do |event| %>
         <li><%= link_to event.name, event %></li>
     <% end %>
 </ul>

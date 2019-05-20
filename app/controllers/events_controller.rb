@@ -19,7 +19,7 @@ class EventsController < ApplicationController
 
   def index
     @event = Event.new()
-    @events = Event.all
+    @events = Event.all.order(date: :desc)
   end
 
   private

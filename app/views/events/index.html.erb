@@ -26,9 +26,23 @@
 
 
 <div class="centered">
-    <% @events.each do |event| %>
+    <h1>Upcoming Events</h1>
+    <% @events.upcoming.each do |event| %>
         <div class="event-tile">
-            <h1><%= link_to event.name, event %></h1>
+            <h2><%= link_to event.name, event %></h2>
+            <p><%= event.date %></p>
+            <p><%= event.description %></p>
+            <p>Created by: <%= link_to event.creator.name, event.creator %></p>
+        </div>
+    <% end %>
+</div>
+
+<div class="centered">
+    <h1>Past Events</h1>
+    <% @events.past.each do |event| %>
+        <div class="event-tile">
+            <h2><%= link_to event.name, event %></h2>
+            <p><%= event.date %></p>
             <p><%= event.description %></p>
             <p>Created by: <%= link_to event.creator.name, event.creator %></p>
         </div>
