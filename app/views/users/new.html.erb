@@ -1,3 +1,5 @@
+<P class="center">Who are you?</p>
+
 <%= form_for @user, url: login_path, html: {class: "col flex-end"} do |f| %>
 
     <div class="input">
@@ -5,6 +7,6 @@
         <%= f.text_field :name %>
     </div>
 
-    <%= f.submit "Sign Up/Log In", class: "submit-btn"%>
+    <%= f.submit "Enter", class: "submit-btn"%>
 
 <% end %>

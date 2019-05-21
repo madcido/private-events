@@ -1,45 +1,64 @@
 <div class="centered">
     <h1><%= @event.name %></h1>
-    <% if @invitation && @invitation.invitor != current_user %>
-        <p>You have been invited to this event by <%= @invitation.invitor.name %> </p>
-    <% end %>
-    <p>Date: <%= @event.date %></p>
-    <% if @event.private? %>
-        <p>Type: Private</p>
-    <% else %>
-        <p>Type: Open</p>
-    <% end %>
     <p>Description: <%= @event.description %></p>
-    <p>Creator:  <%= link_to @event.creator.name, @event.creator %> </p>
-
-    <% if logged_in? && (!@event.private? || @invitation) %>
-        <% if @event.attendees.include?(current_user) %>
-            <%= form_for @attendance, method: :delete, url: attendance_path(@event.attendances.find_by(user_id: current_user.id)) do |f| %>
-                <%= f.submit "Leave Attendance" %> 
-            <% end %>
+    <hr>
+    <div class="row space-between">
+        <p>Date: <%= @event.date %></p>
+        <% if @event.private? %>
+            <p>Type: Private</p>
         <% else %>
-            <%= form_for @attendance do |f| %>
-                <%= f.submit "Attend this Event" %> 
-                <%= f.hidden_field :user_id, value: session[:id] %>
-                <%= f.hidden_field :event_id, value: params[:id] %>
+            <p>Type: Open</p>
+        <% end %>
+        <p>Creator:  <%= link_to @event.creator.name, @event.creator %> </p>
+    </div>
+    <hr>
+
+    <% if @invitation && @invitation.invitor != current_user %>
+        <p class="center">You have been invited to this event by <%= @invitation.invitor.name %> </p>
+    <% end %>
+
+    <div class="row space-around">
+        <div class="att-inv">
+            <% if !@event.private? || @invitation %>
+                <p class="center">Take part?</p>
+                <% if @event.attendees.include?(current_user) %>
+                    <%= form_for @attendance, method: :delete, url: attendance_path(@event.attendances.find_by(user_id: current_user.id)) do |f| %>
+                        <%= f.submit "Leave Attendance" %> 
+                    <% end %>
+                <% else %>
+                    <%= form_for @attendance do |f| %>
+                        <%= f.hidden_field :user_id, value: session[:id] %>
+                        <%= f.hidden_field :event_id, value: params[:id] %>
+                        <%= f.submit "Attend this Event" %> 
+                    <% end %>
+                <% end %>
             <% end %>
+            <p class="center">People attending:</p>
+            <ul>
+                <% @event.attendees.each do |attendee| %>
+                    <li> <%= link_to attendee.name, user_path(attendee.id) %> </li>
+                <% end %>
+            </ul>
+        </div>
+        <% if @event.private? %>
+            <div class="att-inv">
+                <% if @invitation %>
+                    <p class="center">Invite people!</p>
+                    <%= form_for @new_invitations do |f| %>
+                        <%= f.collection_select(:invited_id, @possible_invites, :id, :name, prompt: "Select") %>
+                        <%= f.hidden_field :event_id, value: params[:id] %>
+                        <%= f.hidden_field :invitor_id, value: session[:id] %>
+                        <%= f.submit "Invite" %>
+                    <% end %>
+                <% end %>
+                <p class="center">People invited:</p>
+                <ul>
+                    <% @event.inviteds.each do |invited| %>
+                        <li> <%= link_to invited.name, user_path(invited.id) %> </li>
+                    <% end %>
+                </ul>
+            </div>
         <% end %>
-    <% end %>
-    <br>
-    <p>People attending this event:</p>
-    <ul>
-        <% @event.attendees.each do |attendee| %>
-            <li> <%= link_to attendee.name, user_path(attendee.id) %> </li>
-        <% end %>
-    </ul>
+    </div>
 </div>
-
-
-<h1>Invitations</h1>
-
-    <%= form_for @invitations do |f| %>
-        <%= f.collection_select(:invited_id, User.all, :id, :name) %>
-        <%= f.hidden_field :event_id, value: params[:id] %>
-        <%= f.hidden_field :invitor_id, value: session[:id] %>
-        <%= f.submit "Invite" %>
-    <% end %>
+<br>

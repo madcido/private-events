@@ -1,0 +1,32 @@
+<% if logged_in? %>
+    <div class="event-form">
+        <p class="new-event">New Event</p>
+        <%= form_for @new_event do |f| %>
+        
+            <div class="input name">
+                <%= f.label :name %>
+                <%= f.text_field :name %>
+            </div>
+                
+            <div class="input">
+                <%= f.label :description %>
+                <%= f.text_area :description %>
+            </div>
+        
+            <div class="input">
+                <%= f.label :date %>
+                <%= f.date_select :date %>
+            </div>
+            
+            <div class="input">
+                <div class="check">
+                    <%= f.check_box :private %>
+                </div>
+                <%= f.label :private, "Make this event private?" %>
+            </div>
+        
+            <%= f.submit "Create Event", class: "submit-btn"%>
+        
+        <% end  %>
+    </div>
+<% end %>

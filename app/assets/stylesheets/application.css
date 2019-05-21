@@ -18,13 +18,28 @@ html {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+hr:last-child {
+    display:none;
+}
+
 body {
-    margin-top: 80px;
+    margin: 0;
+    padding: 0;
+}
+
+.silver-box {
+    background-color: rgba(200,200,200,0.3);
+    padding-top: 70px;
+    max-width: 600px;
+    height: auto;
+    min-height: 100vh;
+    margin: 0 auto;
 }
 
 h1 {
     text-align: center;
     background-color: purple;
+    box-shadow: 0 0 2px black;
     color: white;
     border-radius: 10px;
     padding: 10px;
@@ -54,6 +69,10 @@ a:hover {
     justify-content: space-around;
 }
 
+.space-between {
+    justify-content: space-between;
+}
+
 .flex-end {
     align-items: flex-end;
 }
@@ -64,6 +83,7 @@ a:hover {
     left: 0;
     right: 0;
     background-color: purple;
+    box-shadow: 0 0 2px black;
 }
 
 .navbar p {
@@ -90,6 +110,10 @@ a:hover {
 .centered {
     width: 400px;
     margin: 0 auto;
+}
+
+.center {
+    text-align: center;
 }
 
 form {
@@ -140,6 +164,7 @@ li {
     top: 100px;
     left: -300px;
     background-color: purple;
+    box-shadow: 0 0 2px black;
     color: white;
     padding: 30px;
     padding-right: 40px;
@@ -190,12 +215,17 @@ li {
 }
 
 .event-tile {
-    padding-bottom: 30px;
-    margin-bottom: 40px;
-    border-bottom: 2px solid black;
+    margin: 40px 0;
 }
 
-.event-tile:last-of-type {
-    border-bottom: none;
-    margin-bottom: 0;
+.att-inv {
+    width: 150px;
+}
+
+.att-inv form {
+    width: auto;
+}
+
+.att-inv select {
+    width: 80px;
 }

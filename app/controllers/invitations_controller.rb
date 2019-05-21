@@ -1,31 +1,20 @@
 class InvitationsController < ApplicationController
         
     def create
-        @invitations = Invitation.new(invitation_params)
-        if @invitations.save
+        @invitation = current_user.created_invites.build(invitation_params)
+        if @invitation.save
             flash["success"] = "Invitation sent"
-            redirect_to event_path(@invitations.event_id) 
+            redirect_to event_path(@invitation.event_id) 
         else
-            flash["error"] = "You already invited"
-            redirect_to event_path(@invitations.event_id) 
+            flash["error"] = "Invalid invitation"
+            redirect_to event_path(@invitation.event_id) 
         end
     end
-
-
-
-
-    def update
-
-
-    end
-
-
-
 
     private
 
     def invitation_params
-        params.require(:invitation).permit(:invited_id, :event_id, :accepted,:invitor_id)
+        params.require(:invitation).permit(:invited_id, :event_id)
     end
     
 end

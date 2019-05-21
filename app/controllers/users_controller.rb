@@ -20,10 +20,10 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by(id: params[:id])
+    @new_event = Event.new()
     @upcoming_events = @user.upcoming_events
     @past_events = @user.past_events
-    @new_invitations = @user.new_invitations
-    @accepted_invitations = @user.accepted_invitations
+    @invitations = @user.invitations
   end
 
   def destroy

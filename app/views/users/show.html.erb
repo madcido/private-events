@@ -1,26 +1,27 @@
-<p>This is <%= @user.name %>'s page.</p>
-
-<ul>Upcoming events:
-    <% @upcoming_events.each do |event| %>
-        <li><%= link_to event.name, event %></li>
+<div class="centered">
+    <h1><%= @user.name %>'s events</h1>
+    
+    <p>Upcoming events:</p>
+    <ul>
+        <% @upcoming_events.each do |event| %>
+            <li><%= link_to event.name, event %></li>
+        <% end %>
+    </ul>
+    
+    <p>Past events:</p>
+    <ul>
+        <% @past_events.each do |event| %>
+            <li><%= link_to event.name, event %></li>
+        <% end %>
+    </ul>
+    
+    <p>Invitations not accepted:</p>
+    <ul>
+    <% @invitations.each do |invitation| %>
+        <% unless @user.attended_events.include?(invitation.event) || !invitation.event.private? %>
+            <li><%= link_to invitation.event.name, invitation.event %></li>
+        <% end %>
     <% end %>
-</ul>
-
-<ul>Past events:
-    <% @past_events.each do |event| %>
-        <li><%= link_to event.name, event %></li>
-    <% end %>
-</ul>
-
-<ul> Invitations not accepted
-<% @new_invitations.each do |invitation| %>
-    <% if @user. attendig.this event %>
-    <li><%= Event.find_by(id: invitation.event_id).name %></li>
-<% end %>
-</ul>
-
-<ul> Invitations accepted
-<% @accepted_invitations.each do |accepted| %>
-    <li><%= Event.find_by(id: accepted.event_id).name %></li>
-<% end %>
-</ul>
+    </ul>
+</div>
+<br>
