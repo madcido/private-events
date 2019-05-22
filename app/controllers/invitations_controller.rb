@@ -1,7 +1,7 @@
 class InvitationsController < ApplicationController
         
     def create
-        @invitation = current_user.created_invites.build(invitation_params)
+        @invitation = Invitation.new(invitation_params)
         if @invitation.save
             flash["success"] = "Invitation sent"
             redirect_to event_path(@invitation.event_id) 
@@ -14,7 +14,7 @@ class InvitationsController < ApplicationController
     private
 
     def invitation_params
-        params.require(:invitation).permit(:invited_id, :event_id)
+        params.require(:invitation).permit(:invited_id, :event_id, :invitor_id)
     end
     
 end
