@@ -29,6 +29,7 @@ body {
 
 .silver-box {
     background-color: rgba(200,200,200,0.3);
+    border: 1px solid silver;
     padding-top: 70px;
     max-width: 600px;
     height: auto;

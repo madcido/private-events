@@ -1,12 +1,13 @@
-<P class="center">Who are you?</p>
-
-<%= form_for @user, url: login_path, html: {class: "col flex-end"} do |f| %>
-
-    <div class="input">
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-    </div>
-
-    <%= f.submit "Enter", class: "submit-btn"%>
-
-<% end %>
+<div class="centered">
+    <h1 class="center">Who are you?</h1>
+    <%= form_for @user, url: login_path, html: {class: "col flex-end"} do |f| %>
+    
+        <div class="input">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+        </div>
+    
+        <%= f.submit "Enter", class: "submit-btn"%>
+    
+    <% end %>
+</div>
