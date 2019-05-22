@@ -1,0 +1,5 @@
+<% if @invitation %>
+    <p class="center">Invite people!</p>
+    <%= render "invite" %>
+<% end %>
+<%= render "list", collection: @event.inviteds, type: "invited" %>

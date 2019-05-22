@@ -1,0 +1,6 @@
+<p class="center">People <%= type %>:</p>
+<ul>
+    <% collection.each do |person| %>
+        <li> <%= link_to person.name, user_path(person.id) %> </li>
+    <% end %>
+</ul>
