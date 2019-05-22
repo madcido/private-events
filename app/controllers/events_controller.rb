@@ -17,7 +17,8 @@ class EventsController < ApplicationController
 
   def show
     @new_event = Event.new()
-    @event = Event.where(id: params[:id]).includes(:attendees, :inviteds).take
+    @event = Event.where(id: params[:id]).includes(:attendees, :inviteds, :creator).take
+    @creator = @event.creator
     @attendance = Attendance.new()
     @invitation = Invitation.find_by(event_id: @event.id, invited_id: current_user.id)
     @new_invitations = Invitation.new()
