@@ -4,12 +4,13 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(events_params)
     if @event.save
-      flash["success"] = "Event created"
+      flash["success"] = "Event successfully created!"
       Attendance.create(user_id: current_user.id, event_id: @event.id)
       Invitation.create(invitor_id: current_user.id, invited_id: current_user.id, event_id: @event.id)
       redirect_to @event
     else
-      flash["error"] = "Event not created"
+      flash["error"] = "Failed to create event."
+      @event.errors.full_messages.each { |msg| flash["error"] << " #{msg}." }
       redirect_to root_path
     end
   end
