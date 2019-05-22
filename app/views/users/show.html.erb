@@ -1,14 +1,14 @@
 <div class="centered">
     <h1><%= @user.name %>'s events</h1>
     
-    <p>Upcoming events:</p>
+    <p>Upcoming attending events:</p>
     <ul>
         <% @upcoming_events.each do |event| %>
             <li><%= link_to event.name, event %></li>
         <% end %>
     </ul>
     
-    <p>Past events:</p>
+    <p>Events attended in the past:</p>
     <ul>
         <% @past_events.each do |event| %>
             <li><%= link_to event.name, event %></li>
