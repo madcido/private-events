@@ -6,7 +6,6 @@ class EventsController < ApplicationController
     if @event.save
       flash["success"] = "Event successfully created!"
       Attendance.create(user_id: current_user.id, event_id: @event.id)
-      Invitation.create(invitor_id: current_user.id, invited_id: current_user.id, event_id: @event.id)
       redirect_to @event
     else
       flash["error"] = "Failed to create event."
