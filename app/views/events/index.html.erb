@@ -1,2 +1,10 @@
-<%= render "event", collection: @upcoming_events, heading: "Upcoming Events" %>
-<%= render "event", collection: @past_events, heading: "Past Events" %>
+<div class="centered">
+    <h1>Upcoming Events</h1>
+    <%= render "event", collection: @upcoming_events %>
+</div>
+<br>
+<div class="centered">
+    <h1>Past Events</h1>
+    <%= render "event", collection: @past_events %>
+</div>
+<br>

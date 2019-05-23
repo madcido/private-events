@@ -1,13 +1,9 @@
-<div class="centered">
-    <h1><%= heading %></h1>
-    <% collection.each do |event| %>
-        <div class="event-tile">
-            <h2><%= link_to event.name, event %></h2>
-            <p><%= event.date.strftime("%B %d, %Y") %></p>
-            <p><%= event.description %></p>
-            <p>Created by: <%= link_to event.creator.name, event.creator %></p>
-        </div>
-        <hr>
-    <% end %>
-</div>
-<br>
+<% collection.each do |event| %>
+    <div class="event-tile">
+        <h2><%= link_to event.name, event %></h2>
+        <p><%= event.date.strftime("%B %d, %Y") %></p>
+        <p><%= event.description %></p>
+        <p>Created by: <%= link_to event.creator.name, event.creator %></p>
+    </div>
+    <hr>
+<% end %>
