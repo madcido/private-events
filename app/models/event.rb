@@ -7,7 +7,5 @@ class Event < ApplicationRecord
     has_many :invitations
     has_many :inviteds, through: :invitations
 
-    default_scope -> { order(date: :desc) }
-
     validates :name, :date, presence: true
 end
