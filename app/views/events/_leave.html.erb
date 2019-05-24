@@ -1,0 +1,3 @@
+<%= form_for @attendance, method: :delete, url: attendance_path(@event.attendances.find_by(user_id: current_user.id)) do |f| %>
+    <%= f.submit "Leave Attendance" %> 
+<% end %>

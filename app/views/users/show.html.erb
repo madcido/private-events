@@ -1,0 +1,27 @@
+<div class="centered">
+    <h1><%= @user.name %>'s events</h1>
+    
+    <p>Upcoming attending events:</p>
+    <ul>
+        <% @upcoming_events.each do |event| %>
+            <li><%= link_to event.name, event %></li>
+        <% end %>
+    </ul>
+    
+    <p>Events attended in the past:</p>
+    <ul>
+        <% @past_events.each do |event| %>
+            <li><%= link_to event.name, event %></li>
+        <% end %>
+    </ul>
+    
+    <p>Invitations not accepted:</p>
+    <ul>
+    <% @invitations.each do |invitation| %>
+        <% unless @user.attended_events.include?(invitation.event) || !invitation.event.private? %>
+            <li><%= link_to invitation.event.name, invitation.event %></li>
+        <% end %>
+    <% end %>
+    </ul>
+</div>
+<br>

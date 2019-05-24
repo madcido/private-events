@@ -1,0 +1,5 @@
+<% if @invitation || current_user == @creator %>
+    <p class="center">Invite people!</p>
+    <%= render "invite" %>
+<% end %>
+<%= render "list", collection: @event.inviteds.where.not(id: @event.attendees.ids), type: "invited" %>

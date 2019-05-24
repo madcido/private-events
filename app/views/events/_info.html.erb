@@ -1,0 +1,15 @@
+<h1><%= @event.name %></h1>
+<% if @event.private? %>
+    <h3 class="center">(private event)</h3>
+<% end %>
+<p>Description: <%= @event.description %></p>
+<hr>
+<div class="row space-between">
+    <p>Date: <%= @event.date.strftime("%B %d, %Y") %></p>
+    <p>Creator:  <%= link_to @creator.name, @creator %> </p>
+</div>
+<hr>
+
+<% if @invitation && @invitation.invitor != current_user %>
+    <p class="center">You have been invited to this event by <%= @invitation.invitor.name %> </p>
+<% end %>

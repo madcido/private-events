@@ -1,0 +1,6 @@
+<%= form_for @new_invitations do |f| %>
+    <%= f.collection_select(:invited_id, @possible_invites, :id, :name, prompt: "Select") %>
+    <%= f.hidden_field :event_id, value: params[:id] %>
+    <%= f.hidden_field :invitor_id, value: session[:id] %>
+    <%= f.submit "Invite" %>
+<% end %>

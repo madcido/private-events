@@ -1,24 +1,5 @@
-# README
+Microverse Ruby on Rails project: Associations
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project specification: build a site similar to a private Eventbrite, where users can create events and send invitations to other users
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Author: <a href="https://github.com/madcido">Fabio Carmo</a> / <a href="https://github.com/danmontielh">Daniel Montiel</a>

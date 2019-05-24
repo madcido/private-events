@@ -1,0 +1,9 @@
+<% if !@event.private? || @invitation || current_user == @creator %>
+    <p class="center">Take part?</p>
+    <% if @event.attendees.include?(current_user) %>
+        <%= render "leave" %>
+    <% else %>
+        <%= render "attend" %>
+    <% end %>
+<% end %>
+<%= render "list", collection: @event.attendees, type: "attending" %>

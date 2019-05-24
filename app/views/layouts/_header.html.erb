@@ -1,0 +1,13 @@
+<nav class="navbar row space-around">
+    <%= link_to "All Events", root_path %>
+    <% if logged_in? %>
+        <%= link_to current_user.name + "'s Events", user_path(current_user.id) %>
+    <% end %>
+    <div class="row">
+        <% if logged_in? %>
+            <%= link_to "Log Out", logout_path, method: :delete %>
+        <% else %>
+            <%= link_to "Log In", login_path %>
+        <% end %>
+    </div>
+</nav>
