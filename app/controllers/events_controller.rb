@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     @attendance = Attendance.new()
     @invitation = Invitation.find_by(event_id: @event.id, invited_id: current_user.id)
     @new_invitations = Invitation.new()
-    @possible_invites = User.where.not(id: @event.inviteds.ids)
+    @possible_invites = User.where.not(id: @event.inviteds.ids).merge(User.where.not(id: @creator.id))
   end
 
   def index
