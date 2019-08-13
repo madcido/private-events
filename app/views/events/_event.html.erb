@@ -1,5 +1,5 @@
 <% collection.each do |event| %>
-    <div class="event-tile">
+    <div class="tile">
         <h2><%= link_to event.name, event %></h2>
         <p><%= event.date.strftime("%B %d, %Y") %></p>
         <p><%= event.description %></p>

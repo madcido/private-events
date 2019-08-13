@@ -1,17 +1,20 @@
 <div class="centered">
+  <h1><%= @event.name %></h1>
+  <div class="tile">    
     <%= render "info" %>
 
     <% if @event.date >= Time.now.to_date %>
-        <div class="row space-around">
-            <div class="att-inv">
-                <%= render "attendances" %>
-            </div>
-            <% if @event.private? %>
-                <div class="att-inv">
-                    <%= render "invitations" %>
-                </div>
-            <% end %>
-        </div>
+    <div class="row space-around">
+      <div class="att-inv">
+        <%= render "attendances" %>
+      </div>
+      <% if @event.private? %>
+      <div class="att-inv">
+        <%= render "invitations" %>
+      </div>
+      <% end %>
+    </div>
     <% end %>
+  </div>
 </div>
 <br>
