@@ -1,5 +1,5 @@
 # Private Events
-The Odin Project, Ruby on Rails Course: Build a web page where users can create events and send invitations to other users
+The Odin Project, Ruby on Rails Course: Build a web page where users can create events and send invitations
 
 ## Live preview
 https://tranquil-journey-59173.herokuapp.com/
